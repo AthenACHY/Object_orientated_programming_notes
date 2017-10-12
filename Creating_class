@@ -18,14 +18,6 @@ class Person:
     self.telephone = telephone
     self.email = email
 
-    def age(self):
-        today = datetime.date.today()
-        age = today.year - self.birthdate.year
-        if today < datetime.date(today.year, self.birthdate.month, self.birthdate.day):
-            age -= 1
-        self._age=age
-        return age
-
 
 __init__ is a special methods that instantly create if we call the Class Person and apply the first set of commands on the data we fed to Person. 
 After we store all the info of the person, Person wil aplly function "age" on birthday to calculate the person's age.
@@ -41,21 +33,23 @@ Jane = Person(
 )
 
 In here we created the instance "Jane" and provide with Person all her details. Person then store them accordingly and caluclate her age. 
+dir(Jane)
 print(person.name)
 print(person.email)
 print(person.age())
 
+class Age:
+    def age(self):
+        today = datetime.date.today()
+        age = today.year - self.birthdate.year
+        if today < datetime.date(today.year, self.birthdate.month, self.birthdate.day):
+            age -= 1
+        self._age=age
+        return age
+
+
 we can add additional information to Jane to update Jane's details. 
 Jane.pets=["cats", "dogs", "fish"]
-But instead of redefining the class Person __init__, we just modify the code:
+or using setattr function:
+setattr(Jane, "pets", ["cats", "dogs", "fish"]) 
 
-class Person:
-    pets = []
-    def add_pet(self, pet):
-        self.pets.append(pet)
-
-Jane = Person() ### renew class Person on jane so now an attribute of pets is created ###
-Jane.add_pet("cat") ### fill in pet for Jane ###
-Jane.add_pet("dogs") ### fill in pet for Jane ###
-
-print(Jane.pets)

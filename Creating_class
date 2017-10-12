@@ -1,0 +1,61 @@
+I am transforming to OOP in Python and think would be nice to put down some thoughts and notes shen going through the online course. Thisare notes I took fromthe python textbook: http://python-textbok.readthedocs.io/en/1.0/Classes.html
+
+2017_10_12
+Introduction to OOP in python
+
+To begin, first learn about defining an object in python using the funtion Class.
+Class defines all the properties of an yet created object and give instructions to how to store the data related to the object.
+Example: use Class "Person" to store all the information of a person:
+  """The Person (self(the name of the object) will have the following variables: names, surnames...etc"""
+  """We define the type of data for each input and then we calculate the ageof the person)"""
+
+class Person:
+  def __init__(self, name, surname, birthdate, address, telephone, email):
+    self.name = name
+    self.surname = surname
+    self.birthdate = birthdate
+    self.address = address
+    self.telephone = telephone
+    self.email = email
+
+    def age(self):
+        today = datetime.date.today()
+        age = today.year - self.birthdate.year
+        if today < datetime.date(today.year, self.birthdate.month, self.birthdate.day):
+            age -= 1
+        self._age=age
+        return age
+
+
+__init__ is a special methods that instantly create if we call the Class Person and apply the first set of commands on the data we fed to Person. 
+After we store all the info of the person, Person wil aplly function "age" on birthday to calculate the person's age.
+
+Sample input:
+Jane = Person(
+    "Jane",
+    "Doe",
+    datetime.date(1992, 3, 12), # year, month, day
+    "No. 12 Short Street, Greenville",
+    "555 456 0987",
+    "jane.doe@example.com"
+)
+
+In here we created the instance "Jane" and provide with Person all her details. Person then store them accordingly and caluclate her age. 
+print(person.name)
+print(person.email)
+print(person.age())
+
+we can add additional information to Jane to update Jane's details. 
+Jane.pets=["cats", "dogs", "fish"]
+But instead of redefining the class Person __init__, we just modify the code:
+
+class Person:
+    pets = []
+    def add_pet(self, pet):
+        self.pets.append(pet)
+
+Jane = Person() ### renew class Person on jane so now an attribute of pets is created ###
+Jane.add_pet("cat") ### fill in pet for Jane ###
+Jane.add_pet("dogs") ### fill in pet for Jane ###
+
+print(Jane.pets)

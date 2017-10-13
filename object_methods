@@ -1,0 +1,28 @@
+2017_10_13
+There are a few default attributes and methods for class objects.
+Instances are operated under the these type of functions, signify by the double underscores in front and after the function.
+
+__init__ : initiate an instance
+__str__: define an input to be type "string"
+__len__: count the length of the instance
+__repr__: produce a string representation
+
+
+Next we learn about the underscore notation of the instance, _ means private instance only appear inside the class definition, __ means the privaate and invisible inside the class definition.
+
+E.g 
+
+class P:
+    def __init__(self,x):
+        self.__x = x
+    def __int__(self):
+        return self.x
+    def get_x(self):
+        return self.__x
+    def set_x(self, x):
+        self.__x = x
+        
+        
+self.__x=x sets in input x as the instance
+get_x sets the instance as self
+p1=P(42)

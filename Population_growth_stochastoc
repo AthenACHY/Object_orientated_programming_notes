@@ -1,0 +1,21 @@
+% Model logistic growth with a poisson model%
+% still follow the equation: n(t+1)=n(t)(1+ r(1-n(t)/K)) %
+% we take that as the lambda and randomly generate the population number from a poisson distribution %
+
+N_0=10
+time_step=100
+r=0.2
+K=100
+
+function N_t=f(N_0, time_step, r, K)
+N_t= zeros(0, time_step)
+N_t(1, 1)=N_0
+for t=2:time_step
+lambda=N_t(1, t-1) * (1+ r* (1- N_t(1, t-1)/K))
+N_t(1, t)=poissrnd(lambda)
+end
+end
+
+% run #1 %
+N_t=f(N_0, time_step, r, K)
+plot([1:time_step], N_t, "-")

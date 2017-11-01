@@ -1,0 +1,27 @@
+import collections
+    
+def Read_in_SAM(input_file, sep):
+  """ read in SAM input from file or other delimited format to create a list of Dictionary """
+  """ check SAM format for the specific type of data store in the instance """
+  Header=["ID", "Start", "End", "cigar", "chr"]
+  Read_list={}
+  f=open(input_file, "rb")
+  for row in f:
+    row=row.replace("\n", "")
+    row=row.replace(" ", "")
+    row_list=row.split("\t")
+    Read_list[row_list[0]]=["ID":row_list[0], "Start":row_list[3], "End":row_list[8], "cigar":row_list[5], "chr":row_list[2]]
+  return Read_list
+  
+  ### Where to reclaim the indexes? from another file? ###
+  ### Do we really need to sort them? ###
+ 
+ 
+ ### first identify the readnames/reads with the ODS sequences from r1 and r2 before BWA ###
+  ### align them and create samtools files ###
+  ### I suggest to sepearte things in a chromosome based manner after alignment using samtool -view ###
+  ### then input SAM and extra data into python to build a dictionary contain everything ###
+  
+  
+  
+    

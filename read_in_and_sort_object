@@ -17,10 +17,12 @@ def Read_in_SAM(input_file, sep):
   ### Do we really need to sort them? ###
  
  
- ### first identify the readnames/reads with the ODS sequences from r1 and r2 before BWA ###
+ ### first identify the readnames/reads with the ODS sequences r2 ###
+ ### extract reads from r1 and r2 before BWA ###
   ### align them and create samtools files ###
   ### I suggest to sepearte things in a chromosome based manner after alignment using samtool -view ###
   ### then input SAM and extra data into python to build a dictionary contain everything ###
+  ### how to cluster things? Given read 1###
   
   
   
